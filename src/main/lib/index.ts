@@ -3,52 +3,52 @@ import { WelcomeNote, appDirectoryname, fileEncoding } from '@shared/constants'
 import { NoteInfo } from '@shared/models'
 import { CreateNote, DeleteNote, GetNotes, ReadNote, WriteNote } from '@shared/types'
 import { dialog } from 'electron'
-import * as fs from "fs"
-import { ensureDir, readFileSync, readdir, remove, stat, writeFile } from 'fs-extra'
+import { ensureDir, readFile, readdir, remove, stat, writeFile } from 'fs-extra'
 import { isEmpty } from 'lodash'
 import { homedir } from 'os'
+import path from 'path'
 import Welcome from '../../../resources/welcome.md?asset'
 
-let NoteCount = 1;
+let NoteCount = 1
 
 export const getRootDir = () => {
-    return `${homedir()}/${appDirectoryname}`
+    return path.join(homedir(), appDirectoryname)
 }
 
-export const getFromSubDir = async (note: string) => {
+export const getFromSubDir = async (note: string): Promise<string[]> => {
     const rootDir = getRootDir()
-    const list: string[] = [];
+    const list: string[] = []
 
-    if (fs.statSync(`${rootDir}/${note}`).isDirectory()) {
-        for (const file of fs.readdirSync(`${rootDir}/${note}`)) {
-            console.log(file)
-            const dirNote = `${rootDir}/${note}`
-            if (file.toLowerCase().includes("ds_store")) {
-                continue;
+    const fullPath = path.join(rootDir, note)
+
+    try {
+        const stats = await stat(fullPath)
+
+        if (stats.isDirectory()) {
+            const files = await readdir(fullPath)
+
+            for (const file of files) {
+                if (file.toLowerCase().includes('ds_store')) {
+                    continue
+                }
+
+                const filePath = path.join(fullPath, file)
+
+                if ((await stat(filePath)).isDirectory()) {
+                    const subList = await getFromSubDir(path.join(note, file))
+                    list.push(...subList)
+                } else {
+                    list.push(path.join(note, file))
+                }
             }
-            else if (fs.statSync(`${dirNote}/${file}`).isDirectory()) {
-                note = `${note}/${file}`
-                getFromSubDir(note)
-            }
-            else {
-                note = `${note}/${file}`
-                list.push(note)
-                console.log(list)
-                return list
-            }
+        } else if (stats.isFile()) {
+            list.push(note)
         }
-        return [];
+    } catch (error) {
+        console.error(`Error while reading ${fullPath}: ${error}`)
     }
-    else if (fs.statSync(`${rootDir}/${note}`).isFile()) {
-        if (note.toLowerCase().includes("ds_store")) {
-            return [];
-        }
-        list.push(note)
-        return list;
-    }
-    else {
-        return [];
-    }
+
+    return list
 }
 
 export const getNotes: GetNotes = async () => {
@@ -61,25 +61,25 @@ export const getNotes: GetNotes = async () => {
         withFileTypes: false
     })
 
-    const notes = notesFileNames.filter((fileName) =>
-        fileName.endsWith('.rtf') ||
-        fileName.endsWith('.md') ||
-        fileName.endsWith('.txt') ||
-        fileName.endsWith('')
+    const notes = notesFileNames.filter(
+        (fileName) =>
+            fileName.endsWith('.rtf') ||
+            fileName.endsWith('.md') ||
+            fileName.endsWith('.txt') ||
+            fileName.endsWith('')
     )
 
-    let noteList: string[] = [];
+    let noteList: string[] = []
 
     for (const note of notes) {
-        if (note.endsWith(".DS_Store")) {
-            continue;
+        if (note.endsWith('.DS_Store')) {
+            continue
         }
-        if (fs.statSync(`${rootDir}/${note}`).isDirectory()) {
-            for (const file of fs.readdirSync(`${rootDir}/${note}`)) {
-                noteList = noteList.concat(await getFromSubDir(note + "/" + file))
+        if ((await stat(path.join(rootDir, note))).isDirectory()) {
+            for (const file of await readdir(path.join(rootDir, note))) {
+                noteList = noteList.concat(await getFromSubDir(path.join(note, file)))
             }
-        }
-        else {
+        } else {
             noteList.push(note)
         }
     }
@@ -87,9 +87,9 @@ export const getNotes: GetNotes = async () => {
     if (isEmpty(noteList)) {
         console.info('No notes found, creating a welcome note.')
 
-        const content = await readFileSync(Welcome, { encoding: fileEncoding })
+        const content = await readFile(Welcome, { encoding: fileEncoding })
 
-        await writeFile(`${rootDir}/${WelcomeNote}`, content, { encoding: fileEncoding })
+        await writeFile(path.join(rootDir, WelcomeNote), content, { encoding: fileEncoding })
 
         noteList.push(WelcomeNote)
     }
@@ -98,7 +98,7 @@ export const getNotes: GetNotes = async () => {
 }
 
 export const getNoteInfoFromFilename = async (filename: string): Promise<NoteInfo> => {
-    const fileStats = await stat(`${getRootDir()}/${filename}`)
+    const fileStats = await stat(path.join(getRootDir(), filename))
 
     return {
         title: filename,
@@ -111,27 +111,26 @@ export const readNote: ReadNote = async (filename) => {
 
     console.info(`Reading note ${filename}`)
     let extension = filename.split('.')[1] // md, rtf, txt or undefined
-    filename = await filename.replace(/\.rtf$/, '')
-    filename = await filename.replace(/\.txt$/, '')
-    filename = await filename.replace(/\.md$/, '')
+    filename = filename.replace(/\.rtf$/, '')
+    filename = filename.replace(/\.txt$/, '')
+    filename = filename.replace(/\.md$/, '')
 
     if (extension == undefined) {
-        extension = "" // undefined = ""
-    }
-    else {
-        extension = "." + extension
+        extension = '' // undefined = ""
+    } else {
+        extension = '.' + extension
     }
 
     console.log(filename + extension)
 
-    return readFileSync(`${rootDir}/${filename}` + extension, { encoding: fileEncoding })
+    return readFile(path.join(rootDir, filename) + extension, { encoding: fileEncoding })
 }
 
 export const writeNote: WriteNote = async (filename, content) => {
     const rootDir = getRootDir()
 
     console.info(`Writing note ${filename}`)
-    return writeFile(`${rootDir}/${filename}`, content, { encoding: fileEncoding })
+    return writeFile(path.join(rootDir, filename), content, { encoding: fileEncoding })
 }
 
 export const createNote: CreateNote = async () => {
@@ -141,50 +140,37 @@ export const createNote: CreateNote = async () => {
 
     const { filePath, canceled } = await dialog.showSaveDialog({
         title: `New Note`,
-        defaultPath: `${rootDir}/Untitled${NoteCount++}`,
+        defaultPath: path.join(rootDir, `Untitled${NoteCount++}`),
         buttonLabel: 'Create',
         properties: ['showOverwriteConfirmation'],
-        showsTagField: false,
-    }
-    )
+        showsTagField: false
+    })
 
     if (canceled || !filePath) {
         console.info('Note creation cancelled.')
         return false
     }
 
-    // const { name: filename, dir: parentDir } = path.parse(filePath)
-
-    // if (parentDir !== rootDir) {
-    //     await dialog.showMessageBox({
-    //         type: 'error',
-    //         title: 'Creation failed.',
-    //         message: `All notes must be save under ${rootDir}.`
-    //     })
-
-    //     return false
-    // }
-
     console.info(`Creating note: ${filePath}`)
     await writeFile(filePath, '')
 
-    return filePath.replace(rootDir, "").replace(`/`, "")
+    return filePath.replace(rootDir, '').replace(path.sep, '')
 }
 
 export const deleteNote: DeleteNote = async (filename) => {
     const rootDir = getRootDir()
 
     let extension = filename.split('.')[1] // md, rtf, txt or undefined
-    filename = await filename.replace(/\.rtf$/, '')
-    filename = await filename.replace(/\.txt$/, '')
-    filename = await filename.replace(/\.md$/, '')
+    filename = filename.replace(/\.rtf$/, '')
+    filename = filename.replace(/\.txt$/, '')
+    filename = filename.replace(/\.md$/, '')
+
     console.log(filename + extension)
 
     if (extension == undefined) {
-        extension = "" // undefined = ""
-    }
-    else {
-        extension = "." + extension
+        extension = '' // undefined = ""
+    } else {
+        extension = '.' + extension
     }
 
     console.log(filename + extension)
@@ -204,6 +190,6 @@ export const deleteNote: DeleteNote = async (filename) => {
     }
 
     console.info(`Deleting note: ${filename}.`)
-    await remove(`${rootDir}/${filename}` + extension)
+    await remove(path.join(rootDir, filename) + extension)
     return true
 }
