@@ -12,7 +12,7 @@ function createWindow(): void {
     height: 670,
     show: false,
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
+    ...(process.platform === 'linux' ? { icon, transparent: true } : {}),
     center: true,
     title: 'Quartz',
     frame: false,

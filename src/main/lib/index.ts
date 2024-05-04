@@ -52,50 +52,49 @@ export const getFromSubDir = async (note: string): Promise<string[]> => {
 }
 
 export const getNotes: GetNotes = async () => {
-    const rootDir = getRootDir()
+    const rootDir = getRootDir();
 
-    await ensureDir(rootDir)
+    await ensureDir(rootDir);
 
     const notesFileNames = await readdir(rootDir, {
         encoding: fileEncoding,
         withFileTypes: false
-    })
+    });
 
-    const notes = notesFileNames.filter(
-        (fileName) =>
-            fileName.endsWith('.rtf') ||
-            fileName.endsWith('.md') ||
-            fileName.endsWith('.txt') ||
-            fileName.endsWith('')
-    )
+    const notes = notesFileNames.filter((fileName) =>
+        fileName.endsWith('.rtf') ||
+        fileName.endsWith('.md') ||
+        fileName.endsWith('.txt') ||
+        fileName.lastIndexOf('.') === -1
+    );
 
-    let noteList: string[] = []
+    let noteList: string[] = [];
 
     for (const note of notes) {
         if (note.endsWith('.DS_Store')) {
-            continue
+            continue;
         }
         if ((await stat(path.join(rootDir, note))).isDirectory()) {
             for (const file of await readdir(path.join(rootDir, note))) {
-                noteList = noteList.concat(await getFromSubDir(path.join(note, file)))
+                noteList = noteList.concat(await getFromSubDir(path.join(note, file)));
             }
         } else {
-            noteList.push(note)
+            noteList.push(note);
         }
     }
 
     if (isEmpty(noteList)) {
-        console.info('No notes found, creating a welcome note.')
+        console.info('No notes found, creating a welcome note.');
 
-        const content = await readFile(Welcome, { encoding: fileEncoding })
+        const content = await readFile(Welcome, { encoding: fileEncoding });
 
-        await writeFile(path.join(rootDir, WelcomeNote), content, { encoding: fileEncoding })
+        await writeFile(path.join(rootDir, WelcomeNote), content, { encoding: fileEncoding });
 
-        noteList.push(WelcomeNote)
+        noteList.push(WelcomeNote);
     }
 
-    return Promise.all(noteList.map(getNoteInfoFromFilename))
-}
+    return Promise.all(noteList.map(getNoteInfoFromFilename));
+};
 
 export const getNoteInfoFromFilename = async (filename: string): Promise<NoteInfo> => {
     const fileStats = await stat(path.join(getRootDir(), filename))
@@ -145,6 +144,19 @@ export const createNote: CreateNote = async () => {
         properties: ['showOverwriteConfirmation'],
         showsTagField: false
     })
+
+    const ext = filePath?.split(".")[1]
+    if (ext != undefined && ext != "rtf" && ext != "md" && ext != "txt") {
+        dialog.showMessageBox({
+            type: 'error',
+            title: 'Invalid File Format',
+            message: `"${ext}" file format is unsupported.`,
+            buttons: ['Ok'],
+            defaultId: 1,
+            cancelId: 1
+        })
+        return false
+    }
 
     if (canceled || !filePath) {
         console.info('Note creation cancelled.')
