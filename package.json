@@ -1,9 +1,9 @@
 {
   "name": "quartz",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An aesthetically pleasing note app for people who want a clean desktop. Licensed under MIT",
   "main": "./out/main/index.js",
-  "author": "example.com",
+  "author": "Double Dot Games",
   "homepage": "https://electron-vite.org",
   "scripts": {
     "format": "prettier --write .",
@@ -24,8 +24,10 @@
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
     "@mdxeditor/editor": "^2.14.0",
+    "bootstrap": "^5.3.3",
     "fs-extra": "^11.2.0",
-    "jotai": "^2.7.1"
+    "jotai": "^2.7.1",
+    "react-bootstrap": "^2.10.2"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",

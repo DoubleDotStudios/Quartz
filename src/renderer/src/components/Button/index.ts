@@ -1,5 +1,5 @@
 export * from './ActionButton'
-export * from './DarkModeButton'
 export * from './DeleteNoteButton'
+export * from './DropdownMenu'
 export * from './NewNoteButton'
 
