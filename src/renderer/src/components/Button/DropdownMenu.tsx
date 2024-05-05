@@ -29,7 +29,7 @@ export const DropdownMenu = () => {
   }, []) // Empty dependency array ensures this effect runs only once
 
   return (
-    <Dropdown onClick={toggleDropdown} ref={dropdownRef}>
+    <Dropdown onClick={toggleDropdown} ref={dropdownRef} className="z-50">
       <Dropdown.Toggle
         id="Theme_Dropdown"
         className="px-2 py-1 rounded-md border border-zinc-400/50 hover:bg-zinc-600/50 transition-colors duration-100 flex justify-between mt-1"
@@ -89,6 +89,34 @@ export const DropdownMenu = () => {
             <Dropdown.Item onClick={() => setTheme('')}>Classic |</Dropdown.Item>
             <Dropdown.Item onClick={() => setTheme('deep_rustic')}> Deep Rustic |</Dropdown.Item>
             <Dropdown.Item onClick={() => setTheme('rustic')}> Rustic</Dropdown.Item>
+          </ul>
+          <ul>
+            <Dropdown.ItemText className="font-black">Solarized</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => setTheme('solarized_dark')}>
+              Solarized Dark |
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('solarized_light')}>
+              {' '}
+              Solarized Light
+            </Dropdown.Item>
+          </ul>
+          <ul>
+            <Dropdown.ItemText className="font-black">Nord</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => setTheme('aurora_red')}>Aurora Red |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('aurora_orange')}>
+              {' '}
+              Aurora Orange |
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('aurora_yellow')}>
+              {' '}
+              Aurora Yellow |
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('aurora_green')}> Aurora Green |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('aurora_pink')}> Aurora Pink |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('nord_blue')}> Frost Blue |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('nord_night')}> Polar Night</Dropdown.Item>
           </ul>
         </Dropdown.Menu>
       )}

@@ -42,42 +42,87 @@ const App = () => {
   const opacity = 'hover:opacity-75 opacity-60 transition colours duration-500 '
 
   const style = getVal().toString()
-  if (style == 'obsidian') {
-    theme = opacity + 'bg-obsidian'
-  } else if (style == 'amethyst') {
-    theme = opacity + 'bg-amethyst'
-  } else if (style == 'rustic') {
-    theme = opacity + 'bg-rustic'
-  } else if (style == 'dark_frequencies') {
-    theme = opacity + 'bg-dark_frequencies'
-  } else if (style == 'rose_quartz') {
-    theme = opacity + 'bg-rose_quartz'
-  } else if (style == 'deep_forest') {
-    theme = opacity + 'bg-deep_forest'
-  } else if (style == 'deep_space') {
-    theme = opacity + 'bg-deep_space'
-  } else if (style == 'cool_ocean') {
-    theme = opacity + 'bg-cool_ocean'
-  } else if (style == 'warm_ocean') {
-    theme = opacity + 'bg-warm_ocean'
-  } else if (style == 'scarlet_embers') {
-    theme = opacity + 'bg-scarlet_embers'
-  } else if (style == 'deep_amethyst') {
-    theme = opacity + 'bg-deep_amethyst'
-  } else if (style == 'space') {
-    theme = opacity + 'bg-space'
-  } else if (style == 'deep_rustic') {
-    theme = opacity + 'bg-deep_rustic'
-  } else if (style == 'forest') {
-    theme = opacity + 'bg-forest'
-  } else if (style == 'deep_marine') {
-    theme = opacity + 'bg-deep_marine'
-  } else if (style == 'deep_obsidian') {
-    theme = opacity + 'bg-deep_obsidian'
-  } else if (style == 'jade') {
-    theme = opacity + 'bg-jade'
-  } else {
-    theme = ''
+  switch (style) {
+    case 'obsidian':
+      theme = opacity + 'bg-obsidian'
+      break
+    case 'amethyst':
+      theme = opacity + 'bg-amethyst'
+      break
+    case 'rustic':
+      theme = opacity + 'bg-rustic'
+      break
+    case 'dark_frequencies':
+      theme = opacity + 'bg-dark_frequencies'
+      break
+    case 'rose_quartz':
+      theme = opacity + 'bg-rose_quartz'
+      break
+    case 'deep_forest':
+      theme = opacity + 'bg-deep_forest'
+      break
+    case 'deep_space':
+      theme = opacity + 'bg-deep_space'
+      break
+    case 'cool_ocean':
+      theme = opacity + 'bg-cool_ocean'
+      break
+    case 'warm_ocean':
+      theme = opacity + 'bg-warm_ocean'
+      break
+    case 'scarlet_embers':
+      theme = opacity + 'bg-scarlet_embers'
+      break
+    case 'deep_amethyst':
+      theme = opacity + 'bg-deep_amethyst'
+      break
+    case 'space':
+      theme = opacity + 'bg-space'
+      break
+    case 'deep_rustic':
+      theme = opacity + 'bg-deep_rustic'
+      break
+    case 'forest':
+      theme = opacity + 'bg-forest'
+      break
+    case 'deep_marine':
+      theme = opacity + 'bg-deep_marine'
+      break
+    case 'deep_obsidian':
+      theme = opacity + 'bg-deep_obsidian'
+      break
+    case 'jade':
+      theme = opacity + 'bg-jade'
+      break
+    case 'solarized_dark':
+      theme = opacity + 'bg-solarized_dark'
+      break
+    case 'solarized_light':
+      theme = opacity + 'text-zinc-600 ' + 'bg-solarized_light'
+      break
+    case 'aurora_red':
+      theme = opacity + 'bg-aurora_red'
+      break
+    case 'aurora_orange':
+      theme = opacity + 'bg-aurora_orange'
+      break
+    case 'aurora_yellow':
+      theme = opacity + 'bg-aurora_yellow'
+      break
+    case 'aurora_green':
+      theme = opacity + 'bg-aurora_green'
+      break
+    case 'aurora_pink':
+      theme = opacity + 'bg-aurora_pink'
+      break
+    case 'nord_blue':
+      theme = opacity + 'bg-nord_blue'
+      break
+    case 'nord_night':
+      theme = opacity + 'bg-nord_night'
+      break
+    default:
+      theme = ''
   }
 
   return (

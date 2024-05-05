@@ -21,7 +21,16 @@ module.exports = {
         deep_rustic: '#292220',
         forest: '#2B3D2F',
         deep_marine: '#00416a',
-        jade: '#00703e'
+        jade: '#00703e',
+        solarized_dark: '#002b36',
+        solarized_light: '#fdf6e3',
+        aurora_red: '#bf616a',
+        aurora_orange: '#d08770',
+        aurora_yellow: '#d8a657',
+        aurora_green: '#a3be8c',
+        aurora_pink: '#b48ead',
+        nord_blue: '#81a1c1',
+        nord_night: '#2e3440'
       }
     }
   },
