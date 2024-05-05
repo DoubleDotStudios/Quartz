@@ -10,8 +10,8 @@ import {
 } from '@/components'
 import { useRef } from 'react'
 
-const storeVal = (value) => {
-  localStorage.setItem('theme', JSON.stringify(value))
+const storeVal = (value, item: string) => {
+  localStorage.setItem(item, JSON.stringify(value))
 }
 
 const getVal = () => {
@@ -27,7 +27,7 @@ const reload = () => {
 }
 
 export const setTheme = (style: string) => {
-  storeVal(style)
+  storeVal(style, 'theme')
   reload()
 }
 
@@ -40,21 +40,23 @@ const App = () => {
 
   let theme = ''
 
+  const opacity = 'hover:opacity-75 opacity-60 transition colours duration-500 '
+
   const style = getVal().toString()
   if (style == 'obsidian') {
-    theme = 'bg-obsidian'
+    theme = opacity + 'bg-obsidian'
   } else if (style == 'amethyst') {
-    theme = 'bg-amethyst'
+    theme = opacity + 'bg-amethyst'
   } else if (style == 'rustic') {
-    theme = 'bg-rustic'
+    theme = opacity + 'bg-rustic'
   } else if (style == 'dark_frequencies') {
-    theme = 'bg-dark_frequencies'
+    theme = opacity + 'bg-dark_frequencies'
   } else if (style == 'rose_quartz') {
-    theme = 'bg-rose_quartz'
+    theme = opacity + 'bg-rose_quartz'
   } else if (style == 'deep_forest') {
-    theme = 'bg-deep_forest'
+    theme = opacity + 'bg-deep_forest'
   } else if (style == 'deep_space') {
-    theme = 'bg-deep_space'
+    theme = opacity + 'bg-deep_space'
   } else {
     theme = ''
   }

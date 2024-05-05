@@ -1,9 +1,9 @@
 {
   "name": "quartz",
-  "version": "1.1.0",
-  "description": "An aesthetically pleasing note app for people who want a clean desktop.",
+  "version": "1.1.1",
+  "description": "The aesthetically pleasing note app for people who want a clean desktop.",
   "main": "./out/main/index.js",
-  "author": "Double Dot Games",
+  "author": "Double Dot Studios",
   "homepage": "https://electron-vite.org",
   "scripts": {
     "format": "prettier --write .",
