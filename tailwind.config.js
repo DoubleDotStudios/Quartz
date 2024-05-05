@@ -9,7 +9,7 @@ module.exports = {
         amethyst: '#49265f',
         rustic: '#3a322d',
         dark_frequencies: '#1e1321',
-        rose_quartz: '#a22a59',
+        rose_quartz: '#90758d',
         deep_forest: '#152218',
         deep_space: '#110223'
       }
