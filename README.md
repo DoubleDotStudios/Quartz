@@ -1,6 +1,6 @@
 # Quartz
 
-An aesthetically pleasing text editor for people who want a clean desktop.
+The aesthetically pleasing text editor for people who want a clean desktop.
 Quartz has simple and intuitive UI.
 Please report any bugs in issues.
 
