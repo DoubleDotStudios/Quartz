@@ -37,7 +37,6 @@ const App = () => {
   const resetScroll = () => {
     contentContainerRef.current?.scrollTo(0, 0)
   }
-
   let theme = ''
 
   const opacity = 'hover:opacity-75 opacity-60 transition colours duration-500 '
