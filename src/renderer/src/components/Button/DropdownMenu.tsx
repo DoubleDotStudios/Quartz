@@ -38,20 +38,58 @@ export const DropdownMenu = () => {
       </Dropdown.Toggle>
       {isOpen && (
         <Dropdown.Menu
-          className="px-2 py-1 rounded-md border transition-colors duration-100 flex justify-between mt-1 bg-zinc-800 flex-col"
+          className="container px-2 py-1 rounded-md border transition-colors duration-100 justify-between mt-1 bg-zinc-800 h-50 flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
-          <Dropdown.Item onClick={() => setTheme('')}>Classic</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item onClick={() => setTheme('amethyst')}>Amethyst</Dropdown.Item>
-          <Dropdown.Item onClick={() => setTheme('obsidian')}>Obsidian</Dropdown.Item>
-          <Dropdown.Item onClick={() => setTheme('rustic')}>Rustic</Dropdown.Item>
-          <Dropdown.Item onClick={() => setTheme('dark_frequencies')}>
-            Dark Frequencies
-          </Dropdown.Item>
-          <Dropdown.Item onClick={() => setTheme('rose_quartz')}>Rose Quartz</Dropdown.Item>
-          <Dropdown.Item onClick={() => setTheme('deep_forest')}>Deep Forest</Dropdown.Item>
-          <Dropdown.Item onClick={() => setTheme('deep_space')}>Deep Space</Dropdown.Item>
+          <ul>
+            <Dropdown.ItemText className="font-black">Purples</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => setTheme('amethyst')}> Amethyst </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('dark_frequencies')}>
+              | Dark Frequencies
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('deep_amethyst')}>
+              {' '}
+              | Deep Amethyst |
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('deep_space')}> Deep Space |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('deep_obsidian')}>
+              {' '}
+              Deep Obsidian |
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('obsidian')}> Obsidian | </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('space')}> Space</Dropdown.Item>
+          </ul>
+          <ul>
+            <Dropdown.ItemText className="font-black">Blues</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => setTheme('cool_ocean')}>Cool Ocean |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('deep_marine')}> Deep Marine |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('warm_ocean')}> Warm Ocean</Dropdown.Item>
+          </ul>
+          <ul>
+            <Dropdown.ItemText className="font-black">Reds</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => setTheme('rose_quartz')}>Rose Quartz |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('scarlet_embers')}>
+              {' '}
+              Scarlet Embers
+            </Dropdown.Item>
+          </ul>
+          <ul>
+            <Dropdown.ItemText className="font-black">Greens</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => setTheme('deep_forest')}>Deep Forest |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('forest')}> Forest |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('jade')}> Jade</Dropdown.Item>
+          </ul>
+          <ul>
+            <Dropdown.ItemText className="font-black">Others</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => setTheme('')}>Classic |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('deep_rustic')}> Deep Rustic |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('rustic')}> Rustic</Dropdown.Item>
+          </ul>
         </Dropdown.Menu>
       )}
     </Dropdown>

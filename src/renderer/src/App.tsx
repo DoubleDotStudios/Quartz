@@ -56,6 +56,26 @@ const App = () => {
     theme = opacity + 'bg-deep_forest'
   } else if (style == 'deep_space') {
     theme = opacity + 'bg-deep_space'
+  } else if (style == 'cool_ocean') {
+    theme = opacity + 'bg-cool_ocean'
+  } else if (style == 'warm_ocean') {
+    theme = opacity + 'bg-warm_ocean'
+  } else if (style == 'scarlet_embers') {
+    theme = opacity + 'bg-scarlet_embers'
+  } else if (style == 'deep_amethyst') {
+    theme = opacity + 'bg-deep_amethyst'
+  } else if (style == 'space') {
+    theme = opacity + 'bg-space'
+  } else if (style == 'deep_rustic') {
+    theme = opacity + 'bg-deep_rustic'
+  } else if (style == 'forest') {
+    theme = opacity + 'bg-forest'
+  } else if (style == 'deep_marine') {
+    theme = opacity + 'bg-deep_marine'
+  } else if (style == 'deep_obsidian') {
+    theme = opacity + 'bg-deep_obsidian'
+  } else if (style == 'jade') {
+    theme = opacity + 'bg-jade'
   } else {
     theme = ''
   }

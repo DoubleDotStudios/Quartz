@@ -35,4 +35,12 @@
   ::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
+
+  .container {
+    column-width: auto;
+  }
+
+  Dropdown.Item {
+    margin: 0;
+  }
 }
