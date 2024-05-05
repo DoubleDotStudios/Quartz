@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { setTheme } from '@renderer/App'
 import { useEffect, useRef, useState } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -5,7 +6,7 @@ import { FaMountainSun } from 'react-icons/fa6'
 
 export const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef(null)
+  const dropdownRef: any = useRef(null)
 
   const toggleDropdown = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen)
