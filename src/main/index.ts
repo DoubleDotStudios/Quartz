@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createNote, deleteNote, getNotes, readNote, writeNote } from '@/lib'
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { CreateNote, DeleteNote, GetNotes, ReadNote, WriteNote } from '@shared/types'
@@ -13,14 +14,17 @@ function createWindow(): void {
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon, transparent: true } : {}),
+    ...(process.platform === 'win32'
+      ? { backgroundMaterial: 'acrylic' }
+      : {
+        vibrancy: 'under-window',
+        titleBarStyle: 'hidden',
+        trafficLightPosition: { x: 15, y: 10 }
+      }),
     center: true,
     title: 'Quartz',
     frame: false,
-    ...(process.platform !== 'win32'
-      ? { vibrancy: 'under-window', titleBarStyle: 'hidden' }
-      : { backgroundMaterial: 'acrylic' }),
     visualEffectState: 'active',
-    trafficLightPosition: { x: 15, y: 10 },
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: true,
