@@ -2,45 +2,177 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  #root {
-    @apply h-full;
-  }
-
-  html,
-  body {
-    @apply h-full;
-    @apply select-none;
-    @apply bg-transparent;
-    @apply font-mono antialiased text-white;
-    @apply overflow-hidden;
-  }
-
-  header {
-    -webkit-app-region: drag;
-  }
-
-  button {
-    -webkit-app-region: no-drag;
-  }
-
-  ::-webkit-scrollbar {
-    @apply w-2;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-[#555] rounded-md;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-
-  .container {
-    column-width: auto;
-  }
-
-  Dropdown.Item {
-    margin: 0;
-  }
+/* @layer base { */
+#root {
+  @apply h-full;
 }
+
+html,
+body {
+  @apply h-full;
+  @apply select-none;
+  @apply font-mono antialiased text-white;
+  @apply overflow-hidden;
+}
+
+header {
+  -webkit-app-region: drag;
+}
+
+button {
+  -webkit-app-region: no-drag;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#555] rounded-md;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.container {
+  column-width: auto;
+}
+
+Dropdown.Item {
+  margin: 0;
+}
+/* } */
+/* 
+.ltr {
+  text-align: left;
+}
+
+.rtl {
+  text-align: right;
+}
+
+.editor-placeholder {
+  color: #999;
+  overflow: hidden;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.editor-paragraph {
+  margin: 0 0 15px 0;
+  position: relative;
+}
+
+.md {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+
+  a {
+    color: aquamarine;
+    text-decoration: underline;
+  }
+
+  textarea {
+    /* position: absolute;
+    left: -9999px;
+    width: 100%;
+  }
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  ul li {
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+
+  ul li:before {
+    content: '•';
+    padding-right: 5px;
+  }
+
+  ol {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    counter-reset: item;
+  }
+
+  ol li {
+    counter-increment: step-counter;
+    margin-bottom: 5px;
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+
+  ol li:before {
+    content: counter(step-counter);
+    margin-right: 20px;
+    font-size: 80%;
+    background-color: #555;
+    color: white;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  code {
+    background: #555;
+    border-radius: 3px;
+  }
+
+  .render {
+    cursor: text;
+    user-select: text;
+  }
+
+  .textarea-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .cursor-overlay {
+    position: absolute;
+    width: 2px; /* Adjust width as needed 
+    height: 100%;
+    background-color: yellow; /* Adjust color as needed 
+    pointer-events: none; /* Ensure the overlay does not interfere with textarea interaction 
+  }
+} */

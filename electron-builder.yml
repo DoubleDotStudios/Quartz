@@ -33,8 +33,8 @@ linux:
     - AppImage
     - snap
     - deb
-  maintainer: electronjs.org
-  category: Utility
+  maintainer: DoubleDotStudios.org
+  category: Productivity
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false

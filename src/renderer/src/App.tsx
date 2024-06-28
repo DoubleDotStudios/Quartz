@@ -8,7 +8,7 @@ import {
   RootLayout,
   Sidebar
 } from '@/components'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 const storeVal = (value, item: string) => {
   localStorage.setItem(item, JSON.stringify(value))
@@ -32,13 +32,16 @@ export const setTheme = (style: string) => {
 }
 
 const App = () => {
+  const [text, setText] = useState('')
+
   const contentContainerRef = useRef<HTMLDivElement>(null)
 
   const resetScroll = () => {
     contentContainerRef.current?.scrollTo(0, 0)
   }
-  let theme = ''
 
+  let theme = ''
+  const content = 'border-l bg-zinc-900/50 border-l-white/20'
   const opacity = 'hover:opacity-75 opacity-60 transition colours duration-500 '
 
   const style = getVal().toString()
@@ -94,12 +97,6 @@ const App = () => {
     case 'jade':
       theme = opacity + 'bg-jade'
       break
-    case 'solarized_dark':
-      theme = opacity + 'bg-solarized_dark'
-      break
-    case 'solarized_light':
-      theme = opacity + 'text-zinc-600 ' + 'bg-solarized_light'
-      break
     case 'aurora_red':
       theme = opacity + 'bg-aurora_red'
       break
@@ -122,7 +119,7 @@ const App = () => {
       theme = opacity + 'bg-nord_night'
       break
     default:
-      theme = ''
+      theme = opacity
   }
 
   return (
@@ -133,8 +130,9 @@ const App = () => {
           <ActionButtonsRow className="flex justify-between mt-1" />
           <NotePreviewList className="mt-3 space-y-1" onSelect={resetScroll} />
         </Sidebar>
-        <Content ref={contentContainerRef} className="border-l bg-zinc-900/50 border-l-white/20">
+        <Content ref={contentContainerRef} className={content}>
           <FloatingNoteTitle className="pt-2" />
+          {/* <MD /> */}
           <MarkdownEditor />
         </Content>
       </RootLayout>

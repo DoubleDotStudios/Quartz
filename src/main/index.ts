@@ -16,9 +16,10 @@ function createWindow(): void {
     center: true,
     title: 'Quartz',
     frame: false,
-    vibrancy: 'under-window',
+    ...(process.platform !== 'win32'
+      ? { vibrancy: 'under-window', titleBarStyle: 'hidden' }
+      : { backgroundMaterial: 'acrylic' }),
     visualEffectState: 'active',
-    titleBarStyle: 'hidden',
     trafficLightPosition: { x: 15, y: 10 },
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),

@@ -84,39 +84,28 @@ export const DropdownMenu = () => {
             <Dropdown.Item onClick={() => setTheme('jade')}> Jade</Dropdown.Item>
           </ul>
           <ul>
+            <Dropdown.ItemText className="font-black">Pastel</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item onClick={() => setTheme('aurora_red')}>Pastel Red |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('aurora_orange')}>
+              {' '}
+              Pastel Orange |
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('aurora_yellow')}>
+              {' '}
+              Pastel Yellow |
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('aurora_green')}> Pastel Green |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('aurora_pink')}> Pastel Pink |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('nord_blue')}> Pastel Blue |</Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('nord_night')}> Pastel Black</Dropdown.Item>
+          </ul>
+          <ul>
             <Dropdown.ItemText className="font-black">Others</Dropdown.ItemText>
             <Dropdown.Divider />
             <Dropdown.Item onClick={() => setTheme('')}>Classic |</Dropdown.Item>
             <Dropdown.Item onClick={() => setTheme('deep_rustic')}> Deep Rustic |</Dropdown.Item>
             <Dropdown.Item onClick={() => setTheme('rustic')}> Rustic</Dropdown.Item>
-          </ul>
-          <ul>
-            <Dropdown.ItemText className="font-black">Solarized</Dropdown.ItemText>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={() => setTheme('solarized_dark')}>
-              Solarized Dark |
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('solarized_light')}>
-              {' '}
-              Solarized Light
-            </Dropdown.Item>
-          </ul>
-          <ul>
-            <Dropdown.ItemText className="font-black">Nord</Dropdown.ItemText>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={() => setTheme('aurora_red')}>Aurora Red |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('aurora_orange')}>
-              {' '}
-              Aurora Orange |
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('aurora_yellow')}>
-              {' '}
-              Aurora Yellow |
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('aurora_green')}> Aurora Green |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('aurora_pink')}> Aurora Pink |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('nord_blue')}> Frost Blue |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('nord_night')}> Polar Night</Dropdown.Item>
           </ul>
         </Dropdown.Menu>
       )}
