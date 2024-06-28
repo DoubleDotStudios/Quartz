@@ -18,13 +18,13 @@ function createWindow(): void {
       ? { backgroundMaterial: 'acrylic' }
       : {
         vibrancy: 'under-window',
+        frame: false,
         titleBarStyle: 'hidden',
+        visualEffectState: 'active',
         trafficLightPosition: { x: 15, y: 10 }
       }),
     center: true,
     title: 'Quartz',
-    frame: false,
-    visualEffectState: 'active',
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: true,
