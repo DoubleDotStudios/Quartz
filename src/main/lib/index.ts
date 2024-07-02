@@ -45,7 +45,14 @@ export const getFromSubDir = async (note: string): Promise<string[]> => {
             list.push(note)
         }
     } catch (error) {
-        console.error(`Error while reading ${fullPath}: ${error}`)
+        dialog.showMessageBox({
+            type: 'error',
+            title: 'Error Reading File',
+            message: `ErrorError while reading ${fullPath}: ${error}.`,
+            buttons: ['Ok'],
+            defaultId: 1,
+            cancelId: 1
+        })
     }
 
     return list
@@ -84,8 +91,6 @@ export const getNotes: GetNotes = async () => {
     }
 
     if (isEmpty(noteList)) {
-        console.info('No notes found, creating a welcome note.');
-
         const content = await readFile(Welcome, { encoding: fileEncoding });
 
         await writeFile(path.join(rootDir, WelcomeNote), content, { encoding: fileEncoding });
@@ -108,7 +113,6 @@ export const getNoteInfoFromFilename = async (filename: string): Promise<NoteInf
 export const readNote: ReadNote = async (filename) => {
     const rootDir = getRootDir()
 
-    console.info(`Reading note ${filename}`)
     let extension = filename.split('.')[1] // md, rtf, txt or undefined
     filename = filename.replace(/\.rtf$/, '')
     filename = filename.replace(/\.txt$/, '')
@@ -120,15 +124,12 @@ export const readNote: ReadNote = async (filename) => {
         extension = '.' + extension
     }
 
-    console.log(filename + extension)
-
     return readFile(path.join(rootDir, filename) + extension, { encoding: fileEncoding })
 }
 
 export const writeNote: WriteNote = async (filename, content) => {
     const rootDir = getRootDir()
 
-    console.info(`Writing note ${filename}`)
     return writeFile(path.join(rootDir, filename), content, { encoding: fileEncoding })
 }
 
@@ -159,11 +160,9 @@ export const createNote: CreateNote = async () => {
     }
 
     if (canceled || !filePath) {
-        console.info('Note creation cancelled.')
         return false
     }
 
-    console.info(`Creating note: ${filePath}`)
     await writeFile(filePath, '')
 
     return filePath.replace(rootDir, '').replace(path.sep, '')
@@ -177,15 +176,12 @@ export const deleteNote: DeleteNote = async (filename) => {
     filename = filename.replace(/\.txt$/, '')
     filename = filename.replace(/\.md$/, '')
 
-    console.log(filename + extension)
 
     if (extension == undefined) {
         extension = '' // undefined = ""
     } else {
         extension = '.' + extension
     }
-
-    console.log(filename + extension)
 
     const { response } = await dialog.showMessageBox({
         type: 'warning',
@@ -197,11 +193,9 @@ export const deleteNote: DeleteNote = async (filename) => {
     })
 
     if (response === 1) {
-        console.info('Note deletion cancelled.')
         return false
     }
 
-    console.info(`Deleting note: ${filename}.`)
     await remove(path.join(rootDir, filename) + extension)
     return true
 }
