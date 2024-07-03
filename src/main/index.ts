@@ -15,7 +15,7 @@ function createWindow(): void {
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon, transparent: true } : {}),
     ...(process.platform === 'win32'
-      ? { /*backgroundMaterial: 'mica',*/ opacity: 0.75 }
+      ? { backgroundMaterial: 'mica', opacity: 0.75 }
       : {
         vibrancy: 'under-window',
         frame: false,
