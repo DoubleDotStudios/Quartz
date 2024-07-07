@@ -42,7 +42,8 @@ const App = () => {
 
   let theme = ''
   const content = 'border-l bg-zinc-900/50 border-l-white/20'
-  const opacity = 'hover:opacity-75 opacity-60 transition colours duration-500 '
+  // const opacity = 'hover:opacity-75 opacity-60 transition colours duration-500 '
+  const opacity = ''
 
   const style = getVal().toString()
   switch (style) {

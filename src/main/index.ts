@@ -13,12 +13,12 @@ function createWindow(): void {
     height: 670,
     show: false,
     autoHideMenuBar: true,
+    frame: false,
     ...(process.platform === 'linux' ? { icon, transparent: true } : {}),
     ...(process.platform === 'win32'
-      ? { backgroundMaterial: 'mica', opacity: 0.75 }
+      ? { backgroundMaterial: 'acrylic' /* , transparent: true, opacity: 0.75 */ }
       : {
         vibrancy: 'under-window',
-        frame: false,
         titleBarStyle: 'hidden',
         visualEffectState: 'active',
         trafficLightPosition: { x: 15, y: 10 }
@@ -72,7 +72,7 @@ app.whenReady().then(() => {
 
   createWindow()
 
-  app.on('activate', function () {
+  app.on('activate', function() {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
