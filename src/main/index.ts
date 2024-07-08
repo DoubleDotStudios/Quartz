@@ -13,15 +13,15 @@ function createWindow(): void {
     height: 670,
     show: false,
     autoHideMenuBar: true,
-    frame: false,
     ...(process.platform === 'linux' ? { icon, transparent: true } : {}),
     ...(process.platform === 'win32'
-      ? { backgroundMaterial: 'acrylic' /* , transparent: true, opacity: 0.75 */ }
+      ? { opacity: 0.95 }
       : {
         vibrancy: 'under-window',
         titleBarStyle: 'hidden',
         visualEffectState: 'active',
-        trafficLightPosition: { x: 15, y: 10 }
+        trafficLightPosition: { x: 15, y: 10 },
+        frame: false
       }),
     center: true,
     title: 'Quartz',

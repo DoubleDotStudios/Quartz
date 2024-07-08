@@ -42,85 +42,88 @@ const App = () => {
 
   let theme = ''
   const content = 'border-l bg-zinc-900/50 border-l-white/20'
-  // const opacity = 'hover:opacity-75 opacity-60 transition colours duration-500 '
-  const opacity = ''
+  let opacity = 'hover:opacity-75 opacity-60 transition colours duration-500 '
+
+  if (window.navigator.platform.indexOf('Win') != -1) {
+    opacity = ''
+  }
 
   const style = getVal().toString()
   switch (style) {
     case 'obsidian':
-      theme = opacity + 'bg-obsidian'
+      theme = opacity + 'bg-obsidian' + ' text-zinc-50'
       break
     case 'amethyst':
-      theme = opacity + 'bg-amethyst'
+      theme = opacity + 'bg-amethyst' + ' text-zinc-50'
       break
     case 'rustic':
-      theme = opacity + 'bg-rustic'
+      theme = opacity + 'bg-rustic' + ' text-zinc-50'
       break
     case 'dark_frequencies':
-      theme = opacity + 'bg-dark_frequencies'
+      theme = opacity + 'bg-dark_frequencies' + ' text-zinc-50'
       break
     case 'rose_quartz':
-      theme = opacity + 'bg-rose_quartz'
+      theme = opacity + 'bg-rose_quartz' + ' text-zinc-50'
       break
     case 'deep_forest':
-      theme = opacity + 'bg-deep_forest'
+      theme = opacity + 'bg-deep_forest' + ' text-zinc-50'
       break
     case 'deep_space':
-      theme = opacity + 'bg-deep_space'
+      theme = opacity + 'bg-deep_space' + ' text-zinc-50'
       break
     case 'cool_ocean':
-      theme = opacity + 'bg-cool_ocean'
+      theme = opacity + 'bg-cool_ocean' + ' text-zinc-50'
       break
     case 'warm_ocean':
-      theme = opacity + 'bg-warm_ocean'
+      theme = opacity + 'bg-warm_ocean' + ' text-zinc-50'
       break
     case 'scarlet_embers':
-      theme = opacity + 'bg-scarlet_embers'
+      theme = opacity + 'bg-scarlet_embers' + ' text-zinc-50'
       break
     case 'deep_amethyst':
-      theme = opacity + 'bg-deep_amethyst'
+      theme = opacity + 'bg-deep_amethyst' + ' text-zinc-50'
       break
     case 'space':
-      theme = opacity + 'bg-space'
+      theme = opacity + 'bg-space' + ' text-zinc-50'
       break
     case 'deep_rustic':
-      theme = opacity + 'bg-deep_rustic'
+      theme = opacity + 'bg-deep_rustic' + ' text-zinc-50'
       break
     case 'forest':
-      theme = opacity + 'bg-forest'
+      theme = opacity + 'bg-forest' + ' text-zinc-50'
       break
     case 'deep_marine':
-      theme = opacity + 'bg-deep_marine'
+      theme = opacity + 'bg-deep_marine' + ' text-zinc-50'
       break
     case 'deep_obsidian':
-      theme = opacity + 'bg-deep_obsidian'
+      theme = opacity + 'bg-deep_obsidian' + ' text-zinc-50'
       break
     case 'jade':
-      theme = opacity + 'bg-jade'
+      theme = opacity + 'bg-jade' + ' text-zinc-50'
       break
     case 'aurora_red':
-      theme = opacity + 'bg-aurora_red'
+      theme = opacity + 'bg-aurora_red' + ' text-zinc-50'
       break
     case 'aurora_orange':
-      theme = opacity + 'bg-aurora_orange'
+      theme = opacity + 'bg-aurora_orange' + ' text-zinc-50'
       break
     case 'aurora_yellow':
-      theme = opacity + 'bg-aurora_yellow'
+      theme = opacity + 'bg-aurora_yellow' + ' text-zinc-50'
       break
     case 'aurora_green':
-      theme = opacity + 'bg-aurora_green'
+      theme = opacity + 'bg-aurora_green' + ' text-zinc-50'
       break
     case 'aurora_pink':
-      theme = opacity + 'bg-aurora_pink'
+      theme = opacity + 'bg-aurora_pink' + ' text-zinc-50'
       break
     case 'nord_blue':
-      theme = opacity + 'bg-nord_blue'
+      theme = opacity + 'bg-nord_blue' + ' text-zinc-50'
       break
     case 'nord_night':
-      theme = opacity + 'bg-nord_night'
+      theme = opacity + 'bg-nord_night' + ' text-zinc-50'
       break
     default:
-      theme = opacity
+      theme = opacity + 'bg-classic' + ' text-zinc-50'
   }
 
   return (

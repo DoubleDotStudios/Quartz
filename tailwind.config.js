@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        classic: '#29292b',
         obsidian: '#2e293a',
         deep_obsidian: '#140e17',
         amethyst: '#9370DB',
