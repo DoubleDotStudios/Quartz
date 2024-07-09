@@ -4,6 +4,7 @@ The aesthetically pleasing text editor for people who want a clean desktop.
 Quartz has simple and intuitive UI.
 Currently, Quartz has 25 unique theming options with more coming in future releases.
 Please report any bugs in issues.
+Currently supports Windows, MacOS and Linux
 
 ![](<Screenshot 2024-04-11 at 11.11.37.png>)
 
