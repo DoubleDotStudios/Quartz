@@ -12,190 +12,190 @@ import Welcome from '../../../resources/welcome.md?asset'
 let NoteCount = 1
 
 export const getRootDir = () => {
-    return path.join(homedir(), appDirectoryname)
+  return path.join(homedir(), appDirectoryname)
 }
 
 export const getFromSubDir = async (note: string): Promise<string[]> => {
-    const rootDir = getRootDir()
-    const list: string[] = []
+  const rootDir = getRootDir()
+  const list: string[] = []
 
-    const fullPath = path.join(rootDir, note)
+  const fullPath = path.join(rootDir, note)
 
-    try {
-        const stats = await stat(fullPath)
+  try {
+    const stats = await stat(fullPath)
 
-        if (stats.isDirectory()) {
-            const files = await readdir(fullPath)
+    if (stats.isDirectory()) {
+      const files = await readdir(fullPath)
 
-            for (const file of files) {
-                if (file.toLowerCase().includes('ds_store')) {
-                    continue
-                }
-
-                const filePath = path.join(fullPath, file)
-
-                if ((await stat(filePath)).isDirectory()) {
-                    const subList = await getFromSubDir(path.join(note, file))
-                    list.push(...subList)
-                } else {
-                    list.push(path.join(note, file))
-                }
-            }
-        } else if (stats.isFile()) {
-            list.push(note)
+      for (const file of files) {
+        if (file.toLowerCase().includes('ds_store')) {
+          continue
         }
-    } catch (error) {
-        dialog.showMessageBox({
-            type: 'error',
-            title: 'Error Reading File',
-            message: `ErrorError while reading ${fullPath}: ${error}.`,
-            buttons: ['Ok'],
-            defaultId: 1,
-            cancelId: 1
-        })
-    }
 
-    return list
+        const filePath = path.join(fullPath, file)
+
+        if ((await stat(filePath)).isDirectory()) {
+          const subList = await getFromSubDir(path.join(note, file))
+          list.push(...subList)
+        } else {
+          list.push(path.join(note, file))
+        }
+      }
+    } else if (stats.isFile()) {
+      list.push(note)
+    }
+  } catch (error) {
+    dialog.showMessageBox({
+      type: 'error',
+      title: 'Error Reading File',
+      message: `ErrorError while reading ${fullPath}: ${error}.`,
+      buttons: ['Ok'],
+      defaultId: 1,
+      cancelId: 1
+    })
+  }
+
+  return list
 }
 
 export const getNotes: GetNotes = async () => {
-    const rootDir = getRootDir();
+  const rootDir = getRootDir()
 
-    await ensureDir(rootDir);
+  await ensureDir(rootDir)
 
-    const notesFileNames = await readdir(rootDir, {
-        encoding: fileEncoding,
-        withFileTypes: false
-    });
+  const notesFileNames = await readdir(rootDir, {
+    encoding: fileEncoding,
+    withFileTypes: false
+  })
 
-    const notes = notesFileNames.filter((fileName) =>
-        fileName.endsWith('.rtf') ||
-        fileName.endsWith('.md') ||
-        fileName.endsWith('.txt') ||
-        fileName.lastIndexOf('.') === -1
-    );
+  const notes = notesFileNames.filter(
+    (fileName) =>
+      fileName.endsWith('.rtf') ||
+      fileName.endsWith('.md') ||
+      fileName.endsWith('.txt') ||
+      fileName.lastIndexOf('.') === -1
+  )
 
-    let noteList: string[] = [];
+  let noteList: string[] = []
 
-    for (const note of notes) {
-        if (note.endsWith('.DS_Store')) {
-            continue;
-        }
-        if ((await stat(path.join(rootDir, note))).isDirectory()) {
-            for (const file of await readdir(path.join(rootDir, note))) {
-                noteList = noteList.concat(await getFromSubDir(path.join(note, file)));
-            }
-        } else {
-            noteList.push(note);
-        }
+  for (const note of notes) {
+    if (note.endsWith('.DS_Store')) {
+      continue
     }
-
-    if (isEmpty(noteList)) {
-        const content = await readFile(Welcome, { encoding: fileEncoding });
-
-        await writeFile(path.join(rootDir, WelcomeNote), content, { encoding: fileEncoding });
-
-        noteList.push(WelcomeNote);
+    if ((await stat(path.join(rootDir, note))).isDirectory()) {
+      for (const file of await readdir(path.join(rootDir, note))) {
+        noteList = noteList.concat(await getFromSubDir(path.join(note, file)))
+      }
+    } else {
+      noteList.push(note)
     }
+  }
 
-    return Promise.all(noteList.map(getNoteInfoFromFilename));
-};
+  if (isEmpty(noteList)) {
+    const content = await readFile(Welcome, { encoding: fileEncoding })
+
+    await writeFile(path.join(rootDir, WelcomeNote), content, { encoding: fileEncoding })
+
+    noteList.push(WelcomeNote)
+  }
+
+  return Promise.all(noteList.map(getNoteInfoFromFilename))
+}
 
 export const getNoteInfoFromFilename = async (filename: string): Promise<NoteInfo> => {
-    const fileStats = await stat(path.join(getRootDir(), filename))
+  const fileStats = await stat(path.join(getRootDir(), filename))
 
-    return {
-        title: filename,
-        lastEditTime: fileStats.mtimeMs
-    }
+  return {
+    title: filename,
+    lastEditTime: fileStats.mtimeMs
+  }
 }
 
 export const readNote: ReadNote = async (filename) => {
-    const rootDir = getRootDir()
+  const rootDir = getRootDir()
 
-    let extension = filename.split('.')[1] // md, rtf, txt or undefined
-    filename = filename.replace(/\.rtf$/, '')
-    filename = filename.replace(/\.txt$/, '')
-    filename = filename.replace(/\.md$/, '')
+  let extension = filename.split('.')[1] // md, rtf, txt or undefined
+  filename = filename.replace(/\.rtf$/, '')
+  filename = filename.replace(/\.txt$/, '')
+  filename = filename.replace(/\.md$/, '')
 
-    if (extension == undefined) {
-        extension = '' // undefined = ""
-    } else {
-        extension = '.' + extension
-    }
+  if (extension == undefined) {
+    extension = '' // undefined = ""
+  } else {
+    extension = '.' + extension
+  }
 
-    return readFile(path.join(rootDir, filename) + extension, { encoding: fileEncoding })
+  return readFile(path.join(rootDir, filename) + extension, { encoding: fileEncoding })
 }
 
 export const writeNote: WriteNote = async (filename, content) => {
-    const rootDir = getRootDir()
+  const rootDir = getRootDir()
 
-    return writeFile(path.join(rootDir, filename), content, { encoding: fileEncoding })
+  return writeFile(path.join(rootDir, filename), content, { encoding: fileEncoding })
 }
 
 export const createNote: CreateNote = async () => {
-    const rootDir = getRootDir()
+  const rootDir = getRootDir()
 
-    await ensureDir(rootDir)
+  await ensureDir(rootDir)
 
-    const { filePath, canceled } = await dialog.showSaveDialog({
-        title: `New Note`,
-        defaultPath: path.join(rootDir, `Untitled${NoteCount++}`),
-        buttonLabel: 'Create',
-        properties: ['showOverwriteConfirmation'],
-        showsTagField: false
+  const { filePath, canceled } = await dialog.showSaveDialog({
+    title: `New Note`,
+    defaultPath: path.join(rootDir, `Untitled${NoteCount++}`),
+    buttonLabel: 'Create',
+    properties: ['showOverwriteConfirmation'],
+    showsTagField: false
+  })
+
+  const ext = filePath?.split('.')[1]
+  if (ext != undefined && ext != 'rtf' && ext != 'md' && ext != 'txt') {
+    dialog.showMessageBox({
+      type: 'error',
+      title: 'Invalid File Format',
+      message: `"${ext}" file format is unsupported.`,
+      buttons: ['Ok'],
+      defaultId: 1,
+      cancelId: 1
     })
+    return false
+  }
 
-    const ext = filePath?.split(".")[1]
-    if (ext != undefined && ext != "rtf" && ext != "md" && ext != "txt") {
-        dialog.showMessageBox({
-            type: 'error',
-            title: 'Invalid File Format',
-            message: `"${ext}" file format is unsupported.`,
-            buttons: ['Ok'],
-            defaultId: 1,
-            cancelId: 1
-        })
-        return false
-    }
+  if (canceled || !filePath) {
+    return false
+  }
 
-    if (canceled || !filePath) {
-        return false
-    }
+  await writeFile(filePath, '')
 
-    await writeFile(filePath, '')
-
-    return filePath.replace(rootDir, '').replace(path.sep, '')
+  return filePath.replace(rootDir, '').replace(path.sep, '')
 }
 
 export const deleteNote: DeleteNote = async (filename) => {
-    const rootDir = getRootDir()
+  const rootDir = getRootDir()
 
-    let extension = filename.split('.')[1] // md, rtf, txt or undefined
-    filename = filename.replace(/\.rtf$/, '')
-    filename = filename.replace(/\.txt$/, '')
-    filename = filename.replace(/\.md$/, '')
+  let extension = filename.split('.')[1] // md, rtf, txt or undefined
+  filename = filename.replace(/\.rtf$/, '')
+  filename = filename.replace(/\.txt$/, '')
+  filename = filename.replace(/\.md$/, '')
 
+  if (extension == undefined) {
+    extension = '' // undefined = ""
+  } else {
+    extension = '.' + extension
+  }
 
-    if (extension == undefined) {
-        extension = '' // undefined = ""
-    } else {
-        extension = '.' + extension
-    }
+  const { response } = await dialog.showMessageBox({
+    type: 'warning',
+    title: 'Delete Note',
+    message: `Are you sure you want to delete ${filename}?`,
+    buttons: ['Delete', 'Cancel'],
+    defaultId: 1,
+    cancelId: 1
+  })
 
-    const { response } = await dialog.showMessageBox({
-        type: 'warning',
-        title: 'Delete Note',
-        message: `Are you sure you want to delete ${filename}?`,
-        buttons: ['Delete', 'Cancel'],
-        defaultId: 1,
-        cancelId: 1
-    })
+  if (response === 1) {
+    return false
+  }
 
-    if (response === 1) {
-        return false
-    }
-
-    await remove(path.join(rootDir, filename) + extension)
-    return true
+  await remove(path.join(rootDir, filename) + extension)
+  return true
 }

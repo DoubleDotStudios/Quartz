@@ -2,14 +2,15 @@
 import { createNote, deleteNote, getNotes, readNote, writeNote } from '@/lib'
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { CreateNote, DeleteNote, GetNotes, ReadNote, WriteNote } from '@shared/types'
-import { BrowserWindow, app, ipcMain, shell } from 'electron'
+import { template } from '@shared/menu'
+import { BrowserWindow, app, ipcMain, shell, Menu } from 'electron'
 import { join } from 'path'
 import icon from '../../resources/icon.png?asset'
 
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
+    width: 990,
     height: 670,
     show: false,
     autoHideMenuBar: true,
@@ -56,6 +57,9 @@ function createWindow(): void {
 app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
+
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.

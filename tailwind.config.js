@@ -32,6 +32,9 @@ module.exports = {
         aurora_pink: '#b48ead',
         nord_blue: '#81a1c1',
         nord_night: '#2e3440'
+      },
+      translate: {
+        5000: '5k'
       }
     }
   },

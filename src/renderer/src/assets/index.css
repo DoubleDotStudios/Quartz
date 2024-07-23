@@ -42,32 +42,10 @@ button {
 Dropdown.Item {
   margin: 0;
 }
-/* } */
-/* 
-.ltr {
-  text-align: left;
-}
-
-.rtl {
-  text-align: right;
-}
-
-.editor-placeholder {
-  color: #999;
-  overflow: hidden;
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  user-select: none;
-  pointer-events: none;
-}
-
-.editor-paragraph {
-  margin: 0 0 15px 0;
-  position: relative;
-}
 
 .md {
+  font-size: large;
+
   h1,
   h2,
   h3,
@@ -106,12 +84,6 @@ Dropdown.Item {
     text-decoration: underline;
   }
 
-  textarea {
-    /* position: absolute;
-    left: -9999px;
-    width: 100%;
-  }
-
   ul {
     list-style: none;
     margin-left: 0;
@@ -129,50 +101,19 @@ Dropdown.Item {
   }
 
   ol {
-    list-style: none;
+    list-style-type: decimal;
     margin-left: 0;
-    padding-left: 0;
-    counter-reset: item;
-  }
-
-  ol li {
-    counter-increment: step-counter;
-    margin-bottom: 5px;
-    padding-left: 1em;
-    text-indent: -1em;
-  }
-
-  ol li:before {
-    content: counter(step-counter);
-    margin-right: 20px;
-    font-size: 80%;
-    background-color: #555;
-    color: white;
-    font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 4px;
+    padding-left: 1.75em;
+    text-indent: -5px;
   }
 
   code {
-    background: #555;
-    border-radius: 3px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Corrier New', monospace;
+    /* font-family: 'Comic Sans MS' cursive; ComicSans Jumpscare lol*/
   }
 
-  .render {
-    cursor: text;
-    user-select: text;
+  blockquote p {
+    font-style: italic;
+    background-color: rgba(200, 200, 200, 0.05);
   }
-
-  .textarea-container {
-    position: relative;
-    width: 100%;
-  }
-
-  .cursor-overlay {
-    position: absolute;
-    width: 2px; /* Adjust width as needed 
-    height: 100%;
-    background-color: yellow; /* Adjust color as needed 
-    pointer-events: none; /* Ensure the overlay does not interfere with textarea interaction 
-  }
-} */
+}

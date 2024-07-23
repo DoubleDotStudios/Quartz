@@ -9,7 +9,7 @@ import { useRef } from 'react'
 export const useMarkdownEditor = () => {
   const selectedNote = useAtomValue(selectedNoteAtom)
   const saveNote = useSetAtom(saveNoteAtom)
-  const editorRef = useRef<MDXEditorMethods>(null)
+  const editorRef = useRef<HTMLTextAreaElement>(null)
 
   const handleAutoSaving = throttle(
     async (content: NoteContent) => {
@@ -29,7 +29,7 @@ export const useMarkdownEditor = () => {
 
     handleAutoSaving.cancel()
 
-    const content = editorRef.current?.getMarkdown()
+    const content = editorRef.current?.value
 
     if (content != null) {
       await saveNote(content)

@@ -4,6 +4,8 @@ import {
   DraggableTopBar,
   FloatingNoteTitle,
   MarkdownEditor,
+  MD,
+  MDT,
   NotePreviewList,
   RootLayout,
   Sidebar
@@ -135,9 +137,8 @@ const App = () => {
           <NotePreviewList className="mt-3 space-y-1" onSelect={resetScroll} />
         </Sidebar>
         <Content ref={contentContainerRef} className={content}>
-          <FloatingNoteTitle className="pt-2" />
-          {/* <MD /> */}
-          <MarkdownEditor />
+          <FloatingNoteTitle className="pt-2 sticky top-0" />
+          <MD />
         </Content>
       </RootLayout>
     </div>
