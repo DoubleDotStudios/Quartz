@@ -7,7 +7,7 @@ import { ensureDir, readFile, readdir, remove, stat, writeFile } from 'fs-extra'
 import { isEmpty } from 'lodash'
 import { homedir } from 'os'
 import path from 'path'
-import Welcome from '../../../resources/welcome.md?asset'
+import Welcome from '../../../resources/Welcome.md?asset'
 
 let NoteCount = 1
 
