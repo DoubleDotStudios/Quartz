@@ -62,6 +62,18 @@ export const MD = () => {
 
   if (!selectedNote) return null
 
+  const elements = document.querySelectorAll('a[id*="fnref"]')
+
+  elements.forEach((el) => {
+    el.setAttribute('target', '_self')
+  })
+
+  const back = document.querySelectorAll('a[class=footnote-backref]')
+
+  back.forEach((el) => {
+    el.setAttribute('target', '_self')
+  })
+
   return (
     <div className="overflow-hidden">
       <base target="_blank" />
@@ -86,7 +98,7 @@ export const MD = () => {
           name="textarea"
           title=""
           id="markdown"
-          className="bg-transparent caret-yellow-500 outline-none resize-none w-full h-full text-lg -my-6 z-10 monospace"
+          className="bg-transparent caret-yellow-500 outline-none resize-none w-full h-full text-2xl -my-6 z-10 monospace"
           defaultValue={selectedNote.content}
           required
           onChange={(e) => {

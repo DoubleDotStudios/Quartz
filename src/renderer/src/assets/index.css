@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base { */
 #root {
   @apply h-full;
 }
@@ -44,7 +43,7 @@ Dropdown.Item {
 }
 
 .md {
-  font-size: large;
+  font-size: 1.5vw;
 
   h1,
   h2,
@@ -56,31 +55,31 @@ Dropdown.Item {
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 2.7vw;
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 2.5vw;
   }
 
   h3 {
-    font-size: 28px;
+    font-size: 2.3vw;
   }
 
   h4 {
-    font-size: 24px;
+    font-size: 2.1vw;
   }
 
   h5 {
-    font-size: 20px;
+    font-size: 1.9vw;
   }
 
   h6 {
-    font-size: 16px;
+    font-size: 1.7vw;
   }
 
   a {
-    color: aquamarine;
+    color: aqua;
     text-decoration: underline;
   }
 
