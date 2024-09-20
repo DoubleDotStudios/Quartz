@@ -27,7 +27,7 @@ Please report any bugs in issues.
 
 ### Dark Frequencies:
 
-![](<./Pictures/Dark Frequencies>)
+![](<./Pictures/Dark Frequencies.png>)
 
 ### And so many more!
 
