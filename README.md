@@ -7,8 +7,6 @@ Please report any bugs in issues.
 
 ## Meet _quartz_!
 
----
-
 ![](./Pictures/Classic.png)
 
 ## _quartz_ has 20+ themes including:
