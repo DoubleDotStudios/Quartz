@@ -1,4 +1,4 @@
-# Quartz
+# _quartz_
 
 The aesthetically pleasing text editor for people who want a clean desktop.
 Quartz has simple and intuitive UI.
