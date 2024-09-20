@@ -1,6 +1,6 @@
 {
   "name": "quartz",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "The aesthetically pleasing note app for people who want a clean desktop.",
   "main": "./out/main/index.js",
   "author": "Double Dot Studios",

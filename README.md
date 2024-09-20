@@ -5,8 +5,30 @@ Quartz has simple and intuitive UI.
 Currently, Quartz has 8 unique theming options with more coming in future releases.
 Please report any bugs in issues.
 
-![](<Screenshot 2024-04-11 at 11.11.37.png>)
+## Meet _quartz_!
 
-![](<Screenshot 2024-04-11 at 11.11.47.png>)
+---
 
-![](<Screenshot 2024-04-11 at 11.12.02.png>)
+![](./Pictures/Classic.png)
+
+## _quartz_ has 20+ themes including:
+
+### Jade:
+
+![](./Pictures/Jade.png)
+
+### Scarlet Embers:
+
+![](<./Pictures/Scarlet Embers.png>)
+
+### Pastel Blue:
+
+![](<./Pictures/Pastel Blue.png>)
+
+### Dark Frequencies:
+
+![](<./Pictures/Dark Frequencies>)
+
+### And so many more!
+
+![](./Pictures/Themes.png)
