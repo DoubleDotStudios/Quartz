@@ -1,6 +1,6 @@
 # _quartz_
 
-The aesthetically pleasing text editor for people who want a clean desktop.
+The aesthetically pleasing notes app for people who want a clean desktop.
 Quartz has simple and intuitive UI.
 Currently, Quartz has 20+ unique theming options with more coming in future releases.
 Please report any bugs in issues.
