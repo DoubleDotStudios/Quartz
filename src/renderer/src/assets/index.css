@@ -78,10 +78,10 @@ Dropdown.Item {
     font-size: 1.7vw;
   }
 
-  a {
-    color: aqua;
-    text-decoration: underline;
-  }
+  /* a { */
+  /*   color: aqua; */
+  /*   text-decoration: underline; */
+  /* } */
 
   ul {
     list-style: none;

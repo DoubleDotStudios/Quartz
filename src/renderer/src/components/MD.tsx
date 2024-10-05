@@ -116,7 +116,7 @@ export const MD = () => {
       <CustomTabPanel value={value.val} index={0}>
         <div
           id="md"
-          className="md select-text -my-6 z-10 outline-none monospace"
+          className="md select-text -my-6 z-10 outline-none monospace [&_a]:underline"
           dangerouslySetInnerHTML={{ __html: md.render(selectedNote.content) }}
         />
         <div className="py-20" />

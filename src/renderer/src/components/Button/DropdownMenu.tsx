@@ -44,34 +44,84 @@ export const DropdownMenu = () => {
           <ul>
             <Dropdown.ItemText className="font-black">Purples</Dropdown.ItemText>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={() => setTheme('amethyst')}> Amethyst </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('dark_frequencies')}>
-              | Dark Frequencies
+            <Dropdown.Item
+              onClick={() => setTheme('bg-amethyst text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Amethyst{' '}
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('deep_amethyst')}>
+            <Dropdown.Item
+              onClick={() =>
+                setTheme(
+                  'bg-pink_lavender_dark text-text_pink_lavender_dark [&_a]:text-link_pink_lavender_dark'
+                )
+              }
+            >
+              | Pink Lavender Dark
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-deep_amethyst text-default [&_a]:text-link_default')}
+            >
               {' '}
               | Deep Amethyst |
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('deep_space')}> Deep Space |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('deep_obsidian')}>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-deep_space text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Deep Space |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-deep_obsidian text-default [&_a]:text-link_default')}
+            >
               {' '}
               Deep Obsidian |
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('obsidian')}> Obsidian | </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('space')}> Space</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-obsidian text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Obsidian |{' '}
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-space text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Space
+            </Dropdown.Item>
           </ul>
           <ul>
             <Dropdown.ItemText className="font-black">Blues</Dropdown.ItemText>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={() => setTheme('cool_ocean')}>Cool Ocean |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('deep_marine')}> Deep Marine |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('warm_ocean')}> Warm Ocean</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-cool_ocean text-default [&_a]:text-link_default')}
+            >
+              Cool Ocean |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-deep_marine text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Deep Marine |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-warm_ocean text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Warm Ocean
+            </Dropdown.Item>
           </ul>
           <ul>
             <Dropdown.ItemText className="font-black">Reds</Dropdown.ItemText>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={() => setTheme('rose_quartz')}>Rose Quartz |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('scarlet_embers')}>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-rose_quartz text-default [&_a]:text-link_default')}
+            >
+              Rose Quartz |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-scarlet_embers text-default [&_a]:text-link_default')}
+            >
               {' '}
               Scarlet Embers
             </Dropdown.Item>
@@ -79,33 +129,114 @@ export const DropdownMenu = () => {
           <ul>
             <Dropdown.ItemText className="font-black">Greens</Dropdown.ItemText>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={() => setTheme('deep_forest')}>Deep Forest |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('forest')}> Forest |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('jade')}> Jade</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-deep_forest text-default [&_a]:text-link_default')}
+            >
+              Deep Forest |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-forest text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Forest |
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => setTheme('bg-jade text-default [&_a]:text-link_default')}>
+              {' '}
+              Jade
+            </Dropdown.Item>
           </ul>
           <ul>
             <Dropdown.ItemText className="font-black">Pastel</Dropdown.ItemText>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={() => setTheme('aurora_red')}>Pastel Red |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('aurora_orange')}>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-aurora_red text-default [&_a]:text-link_default')}
+            >
+              Pastel Red |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-aurora_orange text-default [&_a]:text-link_default')}
+            >
               {' '}
               Pastel Orange |
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('aurora_yellow')}>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-aurora_yellow text-default [&_a]:text-link_default')}
+            >
               {' '}
               Pastel Yellow |
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('aurora_green')}> Pastel Green |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('aurora_pink')}> Pastel Pink |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('nord_blue')}> Pastel Blue |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('nord_night')}> Pastel Black</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-aurora_green text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Pastel Green |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-aurora_pink text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Pastel Pink |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-nord_blue text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Pastel Blue |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-nord_night text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Pastel Black
+            </Dropdown.Item>
+          </ul>
+          <ul>
+            <Dropdown.ItemText className="font-black">Catppuccin</Dropdown.ItemText>
+            <Dropdown.Divider />
+            <Dropdown.Item
+              onClick={() => setTheme('bg-latte text-text_latte [&_a]:text-link_latte')}
+            >
+              Latte |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-frappe text-text_frappe [&_a]:text-link_frappe')}
+            >
+              {' '}
+              Frappe |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-macchiato text-text_macchiato [&_a]:text-link_macchiato')}
+            >
+              {' '}
+              Macchiato |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-mocha text-text_mocha [&_a]:text-link_mocha')}
+            >
+              {' '}
+              Mocha
+            </Dropdown.Item>
           </ul>
           <ul>
             <Dropdown.ItemText className="font-black">Others</Dropdown.ItemText>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={() => setTheme('')}>Classic |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('deep_rustic')}> Deep Rustic |</Dropdown.Item>
-            <Dropdown.Item onClick={() => setTheme('rustic')}> Rustic</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-classic text-default [&_a]:text-link_default')}
+            >
+              Classic |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-deep_rustic text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Deep Rustic |
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => setTheme('bg-rustic text-default [&_a]:text-link_default')}
+            >
+              {' '}
+              Rustic
+            </Dropdown.Item>
           </ul>
         </Dropdown.Menu>
       )}
