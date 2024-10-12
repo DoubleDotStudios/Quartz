@@ -5,5 +5,5 @@ out
 *.log*
 *.todo
 build
-resources
+# resources
 .vscode
