@@ -14,18 +14,18 @@ function createWindow(): void {
     height: 670,
     show: false,
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon, transparent: true } : {}),
+    ...(process.platform === 'linux' ? { icon: icon, transparent: true } : {}),
     ...(process.platform === 'win32'
       ? { opacity: 0.95 }
       : {
         vibrancy: 'under-window',
         titleBarStyle: 'hidden',
         visualEffectState: 'active',
-        trafficLightPosition: { x: 15, y: 10 },
-        frame: false
+        trafficLightPosition: { x: 15, y: 10 }
       }),
+    ...(process.platform === 'darwin' ? { frame: false } : {}),
     center: true,
-    title: 'Quartz',
+    title: 'quartz',
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: true,
