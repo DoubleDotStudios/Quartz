@@ -3,11 +3,10 @@ import * as React from 'react'
 import { Remarkable } from 'remarkable'
 import { linkify } from 'remarkable/linkify'
 import { useMarkdownEditor } from '@renderer/hooks/useMarkdownEditor'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
 import { TextareaAutosize } from '@mui/base/TextareaAutosize'
 import { value } from '@shared/constants'
+import { ViewEditButton } from './Button/ViewEditButton'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -50,14 +49,16 @@ export const MD = () => {
 
   const [text, setText] = useState(selectedNote?.content)
 
-  const [val, setVal] = React.useState(0)
+  const [editing, setEditing] = useState(false)
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setVal(newValue)
-    value.val = val - 1
-    if (value.val <= -1) {
+  const toggleEditing = () => {
+    if (editing == true) {
+      value.val = 0
+    } else {
       value.val = 1
     }
+
+    setEditing(!editing)
   }
 
   if (!selectedNote) return null
@@ -77,21 +78,6 @@ export const MD = () => {
   return (
     <div className="overflow-hidden">
       <base target="_blank" />
-      <Box sx={{ borderBottom: 0, borderColor: 'transparent' }}>
-        <Tabs
-          value={value.val}
-          onChange={handleChange}
-          aria-label="Markdown Tabs"
-          textColor="inherit"
-          indicatorColor="transparent"
-          centered
-          className="-my-3 z-20"
-          selectionFollowsFocus
-        >
-          <Tab label="View" {...a11yProps(0)} />
-          <Tab label="Edit" {...a11yProps(1)} />
-        </Tabs>
-      </Box>
       <CustomTabPanel value={value.val} index={1}>
         <TextareaAutosize
           ref={editorRef}
@@ -121,6 +107,7 @@ export const MD = () => {
         />
         <div className="py-20" />
       </CustomTabPanel>
+      <ViewEditButton isEditing={editing} onClick={toggleEditing} />
     </div>
   )
 }
