@@ -81,7 +81,7 @@ export const DropdownMenu = () => {
         id="Theme_Dropdown"
         className="px-2 py-1 rounded-md border border-zinc-400/50 hover:bg-zinc-600/50 transition-colors duration-100 flex justify-between mt-1"
       >
-        <FaMountainSun className="w-4 h-4 text-zinc-300" />
+        <FaMountainSun title="Select Theme" className="w-4 h-4 text-zinc-300" />
       </Dropdown.Toggle>
       {isOpen && (
         <Dropdown.Menu

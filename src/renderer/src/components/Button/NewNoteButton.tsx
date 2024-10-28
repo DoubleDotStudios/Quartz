@@ -12,7 +12,7 @@ export const NewNoteButton = ({ ...props }: ActionButtonProps) => {
 
   return (
     <ActionButton {...props} onClick={handelCreation}>
-      <FaRegFileAlt className="w-4 h-4 text-zinc-300" />
+      <FaRegFileAlt title="New Note" className="w-4 h-4 text-zinc-300" />
     </ActionButton>
   )
 }
