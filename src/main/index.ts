@@ -10,6 +10,8 @@ import icon from '../../resources/icon.png?asset'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    minWidth: 495,
+    minHeight: 335,
     width: 990,
     height: 670,
     show: false,
@@ -18,11 +20,11 @@ function createWindow(): void {
     ...(process.platform === 'win32'
       ? { opacity: 0.95 }
       : {
-        vibrancy: 'under-window',
-        titleBarStyle: 'hidden',
-        visualEffectState: 'active',
-        trafficLightPosition: { x: 15, y: 10 }
-      }),
+          vibrancy: 'under-window',
+          titleBarStyle: 'hidden',
+          visualEffectState: 'active',
+          trafficLightPosition: { x: 15, y: 10 }
+        }),
     ...(process.platform === 'darwin' ? { frame: false } : {}),
     center: true,
     title: 'quartz',
@@ -76,7 +78,7 @@ app.whenReady().then(() => {
 
   createWindow()
 
-  app.on('activate', function() {
+  app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
