@@ -23,11 +23,7 @@ export const Sidebar = ({ className, children, ...props }: ComponentProps<'aside
       {...props}
     >
       {children}
-      <HideSidebarButton
-        isOpened={opened}
-        onClick={() => setOpened(!opened)}
-        className="absolute bottom-2 left-2"
-      />
+      <HideSidebarButton isOpened={opened} onClick={() => setOpened(!opened)} />
     </aside>
   )
 }

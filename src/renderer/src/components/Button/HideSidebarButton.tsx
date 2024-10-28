@@ -1,6 +1,4 @@
 import { ActionButton, ActionButtonProps } from '@/components'
-import { createEmptyNoteAtom } from '@/store'
-import { useSetAtom } from 'jotai'
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa'
 
 interface HideSidebarButtonProps extends ActionButtonProps {
@@ -9,7 +7,7 @@ interface HideSidebarButtonProps extends ActionButtonProps {
 
 export const HideSidebarButton = ({ isOpened, ...props }: HideSidebarButtonProps) => {
   return (
-    <ActionButton {...props}>
+    <ActionButton {...props} className="absolute bottom-2 left-2">
       {isOpened ? (
         <FaArrowLeft title="Hide Sidebar" className="w-4 h-4 text-zinc-300" />
       ) : (
