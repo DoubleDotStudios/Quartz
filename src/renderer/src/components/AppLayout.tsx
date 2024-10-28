@@ -1,5 +1,6 @@
-import { ComponentProps, forwardRef } from 'react'
+import { ComponentProps, forwardRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { HideSidebarButton } from './Button/HideSidebarButton'
 
 export const RootLayout = ({ className, children, ...props }: ComponentProps<'main'>) => {
   return (
@@ -10,12 +11,23 @@ export const RootLayout = ({ className, children, ...props }: ComponentProps<'ma
 }
 
 export const Sidebar = ({ className, children, ...props }: ComponentProps<'aside'>) => {
+  const [opened, setOpened] = useState(true)
+
   return (
     <aside
-      className={twMerge('w-[250px] mt-10 h-[100vh + 10] overflow-auto', className)}
+      className={twMerge(
+        'w-[250px] mt-10 h-[100vh + 10] overflow-auto duration-500',
+        className,
+        `${opened === true ? '' : 'ml-[-250px]'}`
+      )}
       {...props}
     >
       {children}
+      <HideSidebarButton
+        isOpened={opened}
+        onClick={() => setOpened(!opened)}
+        className="absolute bottom-2 left-2"
+      />
     </aside>
   )
 }
