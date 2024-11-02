@@ -10,11 +10,13 @@ import icon from '../../resources/icon.png?asset'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    minWidth: 495,
+    minHeight: 335,
     width: 990,
     height: 670,
     show: false,
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon: icon, transparent: true } : {}),
+    ...(process.platform === 'linux' ? { icon, transparent: true, opacity: 0.95 } : {}),
     ...(process.platform === 'win32'
       ? { opacity: 0.95 }
       : {
