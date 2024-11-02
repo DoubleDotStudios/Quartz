@@ -2,48 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  @apply h-full;
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
-html,
-body {
-  @apply h-full;
-  @apply select-none;
-  @apply font-mono antialiased text-white;
-  @apply overflow-hidden;
-}
+@layer base {
+  #root {
+    @apply h-full;
+  }
 
-header {
-  -webkit-app-region: drag;
-}
+  html,
+  body {
+    @apply h-full;
+    @apply select-none;
+    @apply font-mono antialiased text-white;
+    @apply overflow-hidden;
+  }
 
-button {
-  -webkit-app-region: no-drag;
-}
+  header {
+    -webkit-app-region: drag;
+  }
 
-::-webkit-scrollbar {
-  @apply w-2;
-}
+  button {
+    -webkit-app-region: no-drag;
+  }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-[#555] rounded-md;
-}
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
 
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#555] rounded-md;
+  }
 
-.container {
-  column-width: auto;
-}
-
-Dropdown.Item {
-  margin: 0;
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
 }
 
 .md {
-  font-size: 1.5vw;
+  font-size: max(calc(1.5vw + 1.5vh), 20px);
 
   h1,
   h2,
@@ -55,33 +59,28 @@ Dropdown.Item {
   }
 
   h1 {
-    font-size: 2.7vw;
+    font-size: max(calc(2.7vw + 2.7vh), 36px);
   }
 
   h2 {
-    font-size: 2.5vw;
+    font-size: max(calc(2.5vw + 2.5vh), 32px);
   }
 
   h3 {
-    font-size: 2.3vw;
+    font-size: max(calc(2.3vw + 2.3vh), 28px);
   }
 
   h4 {
-    font-size: 2.1vw;
+    font-size: max(calc(2.1vw + 2.1vh), 24px);
   }
 
   h5 {
-    font-size: 1.9vw;
+    font-size: max(calc(1.9vw + 1.9vh), 20px);
   }
 
   h6 {
-    font-size: 1.7vw;
+    font-size: max(calc(1.7vw + 1.7vh), 16px);
   }
-
-  /* a { */
-  /*   color: aqua; */
-  /*   text-decoration: underline; */
-  /* } */
 
   ul {
     list-style: none;
