@@ -1,0 +1,177 @@
+[
+  {
+    "id": "0",
+    "name": "%Purples",
+    "theme": " text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "1",
+    "name": "Amethyst",
+    "theme": "bg-amethyst text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "2",
+    "name": "Pink Lavender Dark",
+    "theme": "bg-pink_lavender_dark text-text_pink_lavender_dark [&_a]:text-link_pink_lavender_dark"
+  },
+  {
+    "id": "3",
+    "name": "Obsidian",
+    "theme": "bg-obsidian text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "4",
+    "name": "Space",
+    "theme": "bg-space text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "5",
+    "name": "Deep Amethyst",
+    "theme": "bg-deep_amethyst text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "6",
+    "name": "Deep Space",
+    "theme": "bg-deep_space text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "7",
+    "name": "Deep Obsidian",
+    "theme": "bg-deep_obsidian text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "8",
+    "name": "%Blues",
+    "theme": " text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "9",
+    "name": "Cool Ocean",
+    "theme": "bg-cool_ocean text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "10",
+    "name": "Deep Marine",
+    "theme": "bg-deep_marine text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "11",
+    "name": "Warm Ocean",
+    "theme": "bg-warm_ocean text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "12",
+    "name": "%Reds",
+    "theme": " text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "13",
+    "name": "Rose Quartz",
+    "theme": "bg-rose_quartz text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "14",
+    "name": "Scarlet Embers",
+    "theme": "bg-scarlet_embers text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "15",
+    "name": "Forest",
+    "theme": "bg-forest text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "16",
+    "name": "Deep Forest",
+    "theme": "bg-deep_forest text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "17",
+    "name": "Jade",
+    "theme": "bg-jade text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "18",
+    "name": "%Pastel",
+    "theme": " text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "19",
+    "name": "Pastel Red",
+    "theme": "bg-aurora_red text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "20",
+    "name": "Pastel Orange",
+    "theme": "bg-aurora_orange text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "21",
+    "name": "Pastel Yellow",
+    "theme": "bg-aurora_yellow text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "22",
+    "name": "Pastel Green",
+    "theme": "bg-aurora_green text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "23",
+    "name": "Pastel Pink",
+    "theme": "bg-aurora_pink text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "24",
+    "name": "Pastel Blue",
+    "theme": "bg-aurora_blue text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "25",
+    "name": "Pastel Black",
+    "theme": "bg-aurora_black text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "26",
+    "name": "%Catppuccin",
+    "theme": " text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "27",
+    "name": "Latte",
+    "theme": "bg-latte text-text_latte [&_a]:text-link_latte"
+  },
+  {
+    "id": "28",
+    "name": "Frappé",
+    "theme": "bg-frappe text-text_frappe [&_a]:text-link_frappe"
+  },
+  {
+    "id": "29",
+    "name": "Macchiato",
+    "theme": "bg-macchiato text-text_macchiato [&_a]:text-link_macchiato"
+  },
+  {
+    "id": "30",
+    "name": "Mocha",
+    "theme": "bg-mocha text-text_mocha [&_a]:text-link_mocha"
+  },
+  {
+    "id": "31",
+    "name": "%Other",
+    "theme": " text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "32",
+    "name": "Classic",
+    "theme": "bg-classic text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "33",
+    "name": "Rustic",
+    "theme": "bg-rustic text-text_default [&_a]:text-link_default"
+  },
+  {
+    "id": "34",
+    "name": "Deep Rustic",
+    "theme": "bg-deep_rustic text-text_default [&_a]:text-link_default"
+  }
+]

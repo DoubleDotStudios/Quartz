@@ -13,7 +13,6 @@ export const useNotesList = ({ onSelect }: { onSelect?: () => void }) => {
       onSelect()
     }
     seed.val = Math.random()
-    console.log(seed.val)
   }
 
   return {

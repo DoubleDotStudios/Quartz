@@ -18,13 +18,12 @@ const storeVal = (value, item: string) => {
 
 const getVal = () => {
   const val = JSON.stringify(localStorage.getItem('theme'))
-  let style: string
-  style = val.replace('"\\"', '')
+  let style = val.replace('"\\"', '')
   style = style.replace('\\""', '')
   return style
 }
 
-const reload = () => {
+export const reload = () => {
   window.location.reload()
 }
 
@@ -49,8 +48,11 @@ const App = () => {
     opacity = ''
   }
 
-  // const style = getVal().toString()
-  const theme = opacity + getVal()
+  const theme: string =
+    opacity +
+    (getVal() == null || undefined
+      ? 'bg-classic text-text_default [&_a]:text-link_default'
+      : getVal())
 
   return (
     <div className={theme}>
@@ -61,7 +63,7 @@ const App = () => {
           <NotePreviewList className="mt-3 space-y-1" onSelect={resetScroll} />
         </Sidebar>
         <Content ref={contentContainerRef} className={content}>
-          <FloatingNoteTitle className="pt-2 sticky top-0" />
+          <FloatingNoteTitle className="pt-2 backdrop-blur-lg sticky top-0" />
           <MD />
         </Content>
       </RootLayout>
