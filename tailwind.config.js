@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
 module.exports = {
-  content: ['./src/renderer/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/renderer/**/*.{js,ts,jsx,tsx}', './src/renderer/src/store/themes.json'],
   theme: {
     extend: {
       colors: {
@@ -15,7 +15,7 @@ module.exports = {
         warm_ocean: '#009b7d',
         scarlet_embers: '#9e0d0d',
         deep_amethyst: '#49265f',
-        pink_lavender_dark: '#1e1321',
+        pink_lavender_dark: '#0c0611',
         rose_quartz: '#90758d',
         deep_forest: '#26332A',
         deep_space: '#110223',
@@ -61,9 +61,6 @@ module.exports = {
 
         // Active Link Colors
         link_pink_lavender_dark_active: '#C8A3BC'
-      },
-      translate: {
-        5000: '5k'
       }
     }
   },

@@ -16,11 +16,9 @@ const storeVal = (value, item: string) => {
   localStorage.setItem(item, JSON.stringify(value))
 }
 
-const getVal = () => {
-  const val = JSON.stringify(localStorage.getItem('theme'))
-  let style = val.replace('"\\"', '')
-  style = style.replace('\\""', '')
-  return style
+const getVal = (): string => {
+  const style = localStorage.getItem('theme')
+  return style ? JSON.parse(style) : ''
 }
 
 export const reload = () => {
@@ -42,17 +40,16 @@ const App = () => {
   }
 
   const content: string = 'border-l bg-zinc-900/50 border-l-white/20'
-  let opacity: string = 'hover:opacity-75 opacity-60 transition colours duration-500 '
+  let opacity: string = 'opacity-85 '
 
   if (window.navigator.platform.indexOf('Win') != -1) {
     opacity = ''
   }
 
-  const theme: string =
-    opacity +
-    (getVal() == null || undefined
-      ? 'bg-classic text-text_default [&_a]:text-link_default'
-      : getVal())
+  const theme: string = `${opacity}${getVal().length > 0 ? getVal() : 'bg-classic text-text_default [&_a]:text-link_default'
+    }`
+
+  console.log(theme)
 
   return (
     <div className={theme}>
