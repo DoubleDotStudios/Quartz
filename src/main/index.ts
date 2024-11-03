@@ -12,8 +12,8 @@ function createWindow(): void {
   const mainWindow = new BrowserWindow({
     minWidth: 495,
     minHeight: 335,
-    width: 990,
-    height: 670,
+    width: 986,
+    height: 560,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon, transparent: true, opacity: 0.95 } : {}),
