@@ -81,7 +81,7 @@ export const DropdownMenu = ({
           style
         )}
       >
-        <FaMountainSun className="w-6 h-6 text-zinc-300" />
+        <FaMountainSun className="w-6 h-6" />
       </button>
       {isOpen && (
         <div aria-label="Dropdown menu" className={dropdownClass}>

@@ -12,7 +12,7 @@ export const NewNoteButton = ({ ...props }: ActionButtonProps) => {
 
   return (
     <ActionButton {...props} onClick={handelCreation}>
-      <FaPlus className="w-6 h-6 text-zinc-300" />
+      <FaPlus className="w-6 h-6" />
     </ActionButton>
   )
 }
